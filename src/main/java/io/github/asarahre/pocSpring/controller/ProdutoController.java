@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -46,6 +47,12 @@ public class ProdutoController {
         // TODO: process POST request
 
         return produtoService.salvaProduto(produto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @RequestBody Produto produtoAtualizado) {
+        Produto produto = produtoService.atualizarProduto(id, produtoAtualizado);
+        return ResponseEntity.ok(produto);
     }
 
     @DeleteMapping("/{id}")

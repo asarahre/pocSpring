@@ -33,6 +33,16 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
+    // U
+    public Produto atualizarProduto(Long id, Produto produtoAtualizado) {
+        Produto produto = bucarPorId(id);
+
+        produto.setNome(produtoAtualizado.getNome());
+        produto.setPreco(produtoAtualizado.getPreco());
+
+        return produtoRepository.save(produto);
+    }
+
     // D
     public void detelarProduto(Long id) {
 
